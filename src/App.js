@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AdminLayout from './layouts/AdminLayout/AdminLayout';
+import HrLayout from './layouts/HrLayout/HrLayout';
+import EmpoloyeeLayout from './layouts/EmployeeLayout/EmployeeLayout';
+import MainLayout from './layouts/MainLayout/MainLayout';
+import Home from './layouts/MainLayout/Home';
+import About from './layouts/MainLayout/About';
+import Login from './layouts/MainLayout/Login';
+import Register from './layouts/MainLayout/Register';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        {/* Main Layout */}
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />         
+          <Route path="/register" element={<Register />} />          
+        </Route>
+
+        {/* Admin Layout */}
+        <Route path="/admin" element={<AdminLayout />}>
+        </Route>
+         {/* Empoloyee Layout */}
+         <Route path="/employee" element={<EmpoloyeeLayout />}> 
+         </Route>
+          {/* Hr Layout */}
+          <Route path="/hr" element={<HrLayout />}>
+         </Route>
+
+      </Routes>
+    </Router>
   );
 }
 
